@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Bhai Dooj, Sis ❤️</title><style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg,#ffe0ec,#e9dcff,#fff0f5);
+    color: #754565;
+    overflow-x: hidden;
+}
+
+.page {
+    display: none;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 22px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.page.active {
+    display: flex;
+    animation: appear .8s ease;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    width: 100%;
+    max-width: 440px;
+    padding: 35px 25px;
+    border-radius: 28px;
+    background: rgba(255,255,255,.82);
+    backdrop-filter: blur(12px);
+    border: 1px solid white;
+    box-shadow: 0 10px 40px #b77ba944;
+}
+
+h1 {
+    color: #c15b91;
+    font-size: 29px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #b45c91;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.9;
+    margin: 15px 0;
+}
+
+.big {
+    font-size: 75px;
+    margin-bottom: 20px;
+}
+
+button {
+    border: none;
+    padding: 14px 25px;
+    border-radius: 30px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    background: linear-gradient(135deg,#e779aa,#a887e8);
+    box-shadow: 0 5px 18px #c17db755;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.06);
+}
+
+.flower {
+    position: fixed;
+    top: -40px;
+    z-index: 1;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+.envelope {
+    font-size: 100px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    50% { transform: translateY(-12px); }
+}
+
+.letter {
+    display: none;
+    background: #fff7fb;
+    border: 2px dashed #e7a2c4;
+    border-radius: 18px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    animation: appear .8s ease;
+}
+
+.letter.show {
+    display: block;
+}
+
+.gift {
+    font-size: 110px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+.gift-message {
+    display: none;
+    padding: 20px;
+    margin-top: 20px;
+    background: #fff5fa;
+    border-radius: 15px;
+    animation: appear .8s ease;
+}
+
+.gift-message.show {
+    display: block;
+}
+
+.signature {
+    color: #bd6097;
+    font-size: 20px;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.music-control {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    padding: 9px 14px;
+    font-size: 13px;
+    margin: 0;
+}
+
+</style></head><body><audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio><button class="music-control" id="musicBtn"
+onclick="toggleMusic()" style="display:none">
+🔊 Music On
+</button>
+
+<script>
+// FLOWER ANIMATION
+
+const flowers = ["🌸","🌷","🌺","💮","💕","✨"];
+
+for(let i=0; i<25; i++){
+    let f=document.createElement("div");
+    f.className="flower";
+    f.innerHTML=flowers[Math.floor(Math.random()*flowers.length)];
+    f.style.left=Math.random()*100+"vw";
+    f.style.fontSize=(15+Math.random()*20)+"px";
+    f.style.animationDuration=(6+Math.random()*8)+"s";
+    f.style.animationDelay=Math.random()*8+"s";
+    document.body.appendChild(f);
+}
+</script><!-- PAGE 1 --><section class="page active" id="p1">
+<div class="card"><div class="big">🌸💗🌸</div><h1>Happy Bhai Dooj, Sis! ❤️</h1><p>
+Heyyy, my beautiful sister!
+<br><br>
+I have prepared something special
+just for you.
+<br><br>
+It's a little gift from your brother,
+made with lots of love.
+<br><br>
+Are you ready?
+</p><button onclick="startSurprise()">
+Open Your Surprise 🎁
+</button></div>
+</section><!-- PAGE 2 --><section class="page" id="p2">
+<div class="card"><div class="big">💌</div><h1>A Letter For You</h1><p>
+Before opening your gift,
+I have something to tell you.
+</p><div class="envelope" onclick="openLetter()">
+💌
+</div><p style="font-size:13px">
+Tap the envelope to open your letter.
+</p><div class="letter" id="letter"><h2>Dear Sister, ❤️</h2><p>
+I don't know how to express everything,
+but I'm genuinely happy to have you
+as my sister.
+</p><p>
+We may have met online,
+but that doesn't make our bond
+any less special.
+</p><p>
+You deserve all the happiness,
+success and beautiful moments
+in this world.
+</p><p>
+Thank you for being a part
+of my little world.
+</p><p><b>With lots of love,<br>Your Brother ❤️</b></p></div><button onclick="go(3)">
+There's Something More 🌷
+</button></div>
+</section><!-- PAGE 3 --><section class="page" id="p3">
+<div class="card"><div class="big">🎁</div><h1>A Little Gift For You!</h1><p>
+I couldn't send you a real gift
+through this screen.
+<br><br>
+So I made a virtual gift
+especially for you!
+</p><div class="gift" onclick="openGift()">
+🎁
+</div><p style="font-size:13px">
+Tap the gift box to unwrap it!
+</p><div class="gift-message" id="giftMessage"><h2>Surprise!! 💖</h2><div class="big">🌷</div><p>
+Your gift is a lifetime supply
+of happiness, smiles and
+good wishes!
+<br><br>
+And one permanent brother
+who will keep annoying you. 😂
+</p></div><button onclick="go(4)">
+One More Thing To Say ✨
+</button></div>
+</section><!-- PAGE 4 --><section class="page" id="p4">
+<div class="card"><div class="big">🦋</div><h1>You're Special!</h1><p>
+You know what?
+<br><br>
+Sometimes we meet people unexpectedly,
+but they slowly become
+an important part of our lives.
+<br><br>
+I'm glad that I met you.
+<br><br>
+Never stop smiling,
+never stop dreaming
+and always believe in yourself.
+</p><button onclick="go(5)">
+Read My Promise 🤝
+</button></div>
+</section><!-- PAGE 5 --><section class="page" id="p5">
+<div class="card"><div class="big">🤝</div><h1>A Brother's Promise</h1><p>
+I may not be the perfect brother,
+but I'll always wish the best for you.
+<br><br>
+I'll listen to your nonsense,
+support your dreams
+and annoy you whenever I get a chance. 😂
+<br><br>
+No matter what happens,
+I hope we always keep
+this beautiful sibling bond.
+</p><button onclick="go(6)">
+Open Your Final Surprise ❤️
+</button></div>
+</section><!-- PAGE 6 --><section class="page" id="p6">
+<div class="card"><div class="big">🌸❤️🌸</div><h1>Forever My Sister!</h1><h2>Distance Doesn't Matter...</h2><p>
+We may be miles apart,
+but distance doesn't matter
+when a bond is genuine.
+<br><br><b>
+You're my sister forever! ❤️
+</b><br><br>
+
+Thank you for being a part
+of my life.
+<br><br>
+
+May your life always be filled
+with happiness, peace,
+success and endless smiles.
+<br><br>
+
+Happy Bhai Dooj, Sis!
+
+</p><div class="signature">
+With lots of love,<br>
+Your Online Brother ❤️
+</div><p style="font-size:12px">
+Made with love, just for you.
+</p><button onclick="restart()">
+Replay Our Little Surprise 🌷
+</button></div>
+</section><script>
+
+// PAGE NAVIGATION
+
+function go(number){
+
+document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
+});
+
+document.getElementById("p"+number).classList.add("active");
+
+window.scrollTo(0,0);
+
+}
+
+// START MUSIC AFTER FIRST BUTTON
+
+function startSurprise(){
+
+const music=document.getElementById("music");
+
+music.play().then(()=>{
+    document.getElementById("musicBtn").style.display="block";
+}).catch(()=>{
+    alert("Please check that song.mp3 is in the same folder as index.html.");
+});
+
+go(2);
+
+}
+
+// ENVELOPE
+
+function openLetter(){
+
+document.getElementById("letter").classList.add("show");
+
+}
+
+// VIRTUAL GIFT
+
+function openGift(){
+
+document.querySelector(".gift").innerHTML="🎉";
+
+document.getElementById("giftMessage").classList.add("show");
+
+}
+
+// MUSIC CONTROL
+
+function toggleMusic(){
+
+const music=document.getElementById("music");
+const btn=document.getElementById("musicBtn");
+
+if(music.paused){
+
+music.play();
+btn.innerHTML="🔊 Music On";
+
+}else{
+
+music.pause();
+btn.innerHTML="🔇 Music Off";
+
+}
+
+}
+
+// RESTART
+
+function restart(){
+
+document.getElementById("music").pause();
+document.getElementById("music").currentTime=0;
+
+document.getElementById("musicBtn").style.display="none";
+
+document.getElementById("letter").classList.remove("show");
+document.getElementById("giftMessage").classList.remove("show");
+document.querySelector(".gift").innerHTML="🎁";
+
+go(1);
+
+}
+
+</script></body>
+</html>
